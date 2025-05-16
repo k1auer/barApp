@@ -1,9 +1,7 @@
 const CACHE_NAME = 'getraenkerechner-cache-v1';
 const urlsToCache = [
     '/',
-    '/bar.html',
-    '/manifest.json',
-    '/img.png'
+    '/bar.html'
 ];
 
 self.addEventListener('install', event => {
