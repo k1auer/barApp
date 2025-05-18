@@ -1,4 +1,4 @@
-const CACHE_NAME = 'getraenkerechner-cache-v2';
+const CACHE_NAME = 'getraenkerechner-cache-v3';
 const urlsToCache = [
     '/',
     '/index.html',
