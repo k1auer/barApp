@@ -1,0 +1,140 @@
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: #333;
+        }
+
+        .header-wrapper {
+          position: sticky;
+          top: 0;
+          left: 0;
+          z-index: 1000; /* bleibt über allem */
+          background-color: white;
+        }
+
+        .header {
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 16px;
+            min-height: 180px;
+        }
+
+        .header-first-line {
+            display: flex;
+            justify-content: space-between;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        #total {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        #items {
+            margin-left: -6px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            overflow-y: auto;
+
+
+          gap: 1px 1px; /* Fixer Abstand zwischen Items */
+          background: white;
+          height: auto;
+          max-height: 150px;
+        }
+
+        .item {
+            position: relative;
+            padding: 8px 12px;
+            margin-left: 6px;
+            margin-top: 6px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9em;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .count {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-wrapper-wrapper {
+
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-top: 1px solid #ccc;
+            min-height: 130px;
+            box-sizing: border-box;
+        }
+
+        .button {
+            flex: 1 1 40%;
+            min-width: 140px;
+            max-width: 200px;
+            padding: 14px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button-site-change {
+            padding: 3px 14px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .utility-button {
+            background-color: #555;
+        }
+
+        @media (max-width: 500px) {
+            .button {
+                min-width: 100px;
+                padding: 12px;
+                font-size: 0.95em;
+            }
+
+            #total {
+                font-size: 1.3em;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #items {
+                max-width: 100%;
+                margin-top: 10px;
+            }
+        }
