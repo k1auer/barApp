@@ -21,7 +21,7 @@
         updateTotal();
 
         if ("vibrate" in navigator) {
-          navigator.vibrate(100); // 100 Millisekunden Vibration
+          navigator.vibrate(300); // 100 Millisekunden Vibration
         }
 
     }
