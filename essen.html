@@ -6,121 +6,22 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <script src="app.js" defer></script>
+
     <title>Bar App - Essen</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background: white;
-            color: #333;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 16px;
-            flex-wrap: wrap;
-        }
-
-        #total {
-            font-size: 1.6em;
-            font-weight: bold;
-        }
-
-        #items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0px;
-            align-items: flex-start;
-            min-height: 2.6em; /* ~2 Zeilen mit etwas Puffer */
-            overflow-y: auto;
-        }
-
-        .item {
-            position: relative;
-            padding: 8px 12px;
-            margin-left: 6px;
-            margin-top: 6px;
-            border-radius: 8px;
-            color: white;
-            font-size: 0.9em;
-            white-space: nowrap;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-
-        .count {
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            background: red;
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .buttons-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px;
-            border-top: 1px solid #ccc;
-            min-height: 130px;
-            box-sizing: border-box;
-        }
-
-        .button {
-            flex: 1 1 40%;
-            min-width: 140px;
-            max-width: 200px;
-            padding: 14px;
-            font-size: 1em;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .utility-button {
-            background-color: #555;
-        }
-
-        @media (max-width: 500px) {
-            .button {
-                min-width: 100px;
-                padding: 12px;
-                font-size: 0.95em;
-            }
-
-            #total {
-                font-size: 1.3em;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            #items {
-                max-width: 100%;
-                margin-top: 10px;
-            }
-        }
-    </style>
 </head>
 <body>
 
-<div class="header">
-    <div id="total">Gesamt: 0.00 €</div>
-    <div id="items"></div>
+<div class="header-wrapper">
+    <div class="header">
+        <div class="header-first-line">
+            <div id="total">Gesamt: 0.00 €</div>
+            <button class="button-site-change" style="background-color: #555555;" onclick="location.href='index.html'">zu Getränken</button>
+        </div>
+
+        <div id="items"></div>
+    </div>
 </div>
 
 <div class="buttons-wrapper">

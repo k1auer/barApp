@@ -96,7 +96,7 @@
             flex: 1 1 40%;
             min-width: 140px;
             max-width: 200px;
-            padding: 14px;
+            padding: 18px;
             font-size: 1em;
             border: none;
             border-radius: 8px;
@@ -120,8 +120,8 @@
         @media (max-width: 500px) {
             .button {
                 min-width: 100px;
-                padding: 12px;
-                font-size: 0.95em;
+                padding: 20px;
+                font-size: 1em;
             }
 
             #total {

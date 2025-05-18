@@ -6,7 +6,11 @@
         document.getElementById('total').textContent = `Gesamt: ${total.toFixed(2)} €`;
     }
 
-    function addItem(name, price, color) {
+    function addItem(name, price, color, withPfand) {
+        if (withPfand){
+            addItem('Pfand', 3.00, '#555', false);
+        }
+
         total += price;
         if (!items[name]) {
             items[name] = {count: 1, price: price, color: color};
@@ -15,6 +19,11 @@
         }
         renderItems();
         updateTotal();
+
+        if ("vibrate" in navigator) {
+          navigator.vibrate(100); // 100 Millisekunden Vibration
+        }
+
     }
 
     function resetAll() {
