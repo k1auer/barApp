@@ -145,9 +145,10 @@
         });
     }
 
+    let demoVersion = "v1";
     let value = localStorage.getItem('demo');
 
-    if(value === null) {
+    if(!value || value !== demoVersion) {
         const driver = window.driver.js.driver;
 
         const driverObj = driver({
@@ -186,10 +187,15 @@
                         title: 'Gut zu wissen', description: 'Die Berechnung des Pfands erfolgt automatisch.'
                     }
                 },
+                {
+                    popover: {
+                        title: 'Gut zu wissen', description: 'Am Besten funktioniert das Tool, wenn man es auf den Home Bildschirm installiert.'
+                    }
+                },
             ]
         });
 
         driverObj.drive();
-        localStorage.setItem('demo', 'shown');
+        localStorage.setItem('demo', demoVersion);
 
     }
