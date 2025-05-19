@@ -1,8 +1,10 @@
-const CACHE_NAME = 'getraenkerechner-cache-v3';
+const CACHE_NAME = 'getraenkerechner-cache-v4';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/essen.html'
+    '/essen.html',
+    '/vendor/driver_js/driver.js',
+    '/vendor/driver_js/driver.css'
 ];
 
 self.addEventListener('install', event => {

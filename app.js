@@ -21,7 +21,7 @@
         updateTotal();
 
         if ("vibrate" in navigator) {
-          navigator.vibrate(300); // 100 Millisekunden Vibration
+          navigator.vibrate(300);
         }
 
     }
@@ -93,13 +93,13 @@
             nameCell.style.padding = '4px';
 
             const priceCell = document.createElement('td');
-            priceCell.textContent = `${item.price.toFixed(2)} €`;
+            priceCell.textContent = `${item.price.toFixed(2)}\u00A0€`;
             priceCell.style.padding = '4px';
             priceCell.style.textAlign = 'right';
 
             const totalCell = document.createElement('td');
             const itemTotal = item.count * item.price;
-            totalCell.textContent = `${itemTotal.toFixed(2)} €`;
+            totalCell.textContent = `${itemTotal.toFixed(2)}\u00A0€`;
             totalCell.style.padding = '4px';
             totalCell.style.textAlign = 'right';
 
@@ -125,7 +125,7 @@
         emptyCell.style.padding = '6px';
 
         const sumValueCell = document.createElement('td');
-        sumValueCell.textContent = `${totalSum.toFixed(2)} €`;
+        sumValueCell.textContent = `${totalSum.toFixed(2)}\u00A0€`;
         sumValueCell.style.padding = '6px';
         sumValueCell.style.textAlign = 'right';
 
@@ -143,4 +143,53 @@
                 .then(reg => console.log('Service Worker registriert:', reg.scope))
                 .catch(err => console.error('Service Worker Fehler:', err));
         });
+    }
+
+    let value = localStorage.getItem('demo');
+
+    if(value === null) {
+        const driver = window.driver.js.driver;
+
+        const driverObj = driver({
+            allowClose: false,
+            showProgress: true,
+            showButtons: ['next', 'previous'],
+            steps: [
+                {element: '#total', popover: {title: 'Gesamtpreis', description: 'Hier wird der zu zahlende Betrag angezeigt'}},
+                {
+                    element: '.buttons-wrapper:nth-child(1)',
+                    popover: {
+                        title: 'Zurücksetzen und Pfand',
+                        description: 'Hier kann die Auswahl zurückgesetzt werden. Außerdem stehen hier die Butten für die Berechnung des Pfands bereit.'
+                    }
+                },
+                {
+                    element: '.buttons-wrapper:nth-child(2)',
+                    popover: {
+                        title: 'Geränke und Speisen', description: 'Hier können die Getränke und Speisen auswählen werden.', onNextClick: () => {
+                            addItem('Cola', 2.50, '#f00', true);
+                            driverObj.moveNext();
+                        }
+                    }
+                },
+                {element: '#items', popover: {title: 'Auswahl', description: 'Hier wird alles angezeigt was ausgewählt wurde. Mit klick eines Buttons erfolgt eine Stonierung.'}},
+                {
+                    element: '#receipt', popover: {
+                        title: 'Quittung', description: 'Übersicht aller Positionen sowie des zu zahlenden Gesammtbetrags.', onNextClick: () => {
+                            resetAll();
+                            driverObj.moveNext();
+                        }
+                    }
+                },
+                {
+                    popover: {
+                        title: 'Gut zu wissen', description: 'Die Berechnung des Pfands erfolgt automatisch.'
+                    }
+                },
+            ]
+        });
+
+        driverObj.drive();
+        localStorage.setItem('demo', 'shown');
+
     }
