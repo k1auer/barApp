@@ -137,8 +137,65 @@
         receiptDiv.appendChild(table);
     }
 
+    function showAppVersion(){
+        const totalDiv = document.getElementById("total");
+        let clickCount = 0;
+        let timer;
+
+        totalDiv.addEventListener("click", () => {
+            clickCount++;
+
+            if (clickCount === 1) {
+                timer = setTimeout(() => {
+                    clickCount = 0;
+                }, 10000);
+            }
+
+            if (clickCount >= 10) {
+                clearTimeout(timer); // Timer stoppen
+                clickCount = 0; // Zähler zurücksetzen
+                console.log("App Version angefordert");
+                getConstantFromSW().then(value => {
+                    console.log("App Version:", value);
+                }).catch(e => console.error(e));
+            }
+        });
+        console.log("App Version Listener aktiv");
+    }
+
+    function getConstantFromSW() {
+        return new Promise((resolve) => {
+            if (!navigator.serviceWorker) {
+                resolve("⚠️ Service Worker wird nicht unterstützt!");
+                return;
+            }
+
+            navigator.serviceWorker.ready.then((registration) => {
+                const sw = registration.active;
+                if (!sw) {
+                    resolve("⚠️ Kein aktiver Service Worker!");
+                    return;
+                }
+
+                // Listener für die Antwort
+                const handler = (event) => {
+                    if (event.data.type === "CONSTANT_RESPONSE") {
+                        navigator.serviceWorker.removeEventListener("message", handler);
+                        resolve(event.data.value);
+                    }
+                };
+                navigator.serviceWorker.addEventListener("message", handler);
+
+                // Anfrage schicken
+                sw.postMessage({ type: "GET_CONSTANT" });
+            });
+        });
+    }
+
+
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
+            showAppVersion();
             navigator.serviceWorker.register('service-worker.js')
                 .then(reg => console.log('Service Worker registriert:', reg.scope))
                 .catch(err => console.error('Service Worker Fehler:', err));

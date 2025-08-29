@@ -1,4 +1,4 @@
-const CACHE_NAME = 'getraenkerechner-cache-v6';
+const CACHE_NAME = 'getraenkerechner-cache-v7';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -26,4 +26,14 @@ self.addEventListener('activate', (event) => {
             Promise.all(keys.map((key) => key !== CACHE_NAME && caches.delete(key)))
         )
     );
+});
+
+self.addEventListener("message", (event) => {
+    console.log("Message received in SW:", event.data);
+    if (event.data && event.data.type === "GET_CONSTANT") {
+        event.source.postMessage({
+            type: "CONSTANT_RESPONSE",
+            value: CACHE_NAME
+        });
+    }
 });
