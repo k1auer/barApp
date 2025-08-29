@@ -145,7 +145,7 @@
         });
     }
 
-    let demoVersion = "v2";
+    let demoVersion = "v3";
     let value = localStorage.getItem('demo');
 
     if(!value || value !== demoVersion) {
@@ -168,7 +168,7 @@
                     element: '.buttons-wrapper:nth-child(2)',
                     popover: {
                         title: 'Geränke und Speisen', description: 'Hier können die Getränke und Speisen auswählen werden.', onNextClick: () => {
-                            addItem('Cola', 2.50, '#f00', true);
+                            addItem('Cola', 4.00, '#f00', true);
                             driverObj.moveNext();
                         }
                     }
