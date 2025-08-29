@@ -1,7 +1,8 @@
-const CACHE_NAME = 'getraenkerechner-cache-v4';
+const CACHE_NAME = 'getraenkerechner-cache-v5';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/tribuene.html',
     '/essen.html',
     '/vendor/driver_js/driver.js',
     '/vendor/driver_js/driver.css'

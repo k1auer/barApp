@@ -17,75 +17,79 @@
 </head>
 <body>
 
-<div class="header-wrapper">
-    <div class="header">
-        <div class="header-first-line">
-            <div id="total">Gesamt: 0.00 €</div>
-            <button class="button-site-change" style="background-color: #555555;" onclick="location.href='essen.html'">zum Essen</button>
+    <div class="header-wrapper">
+        <div class="header">
+            <div class="header-first-line">
+                <div id="total">Gesamt: 0.00 €</div>
+                <button class="button-site-change" style="background-color: #555555;" onclick="location.href='tribuene.html'">zur Tribüne</button>
+            </div>
+
+            <div id="items"></div>
+        </div>
+    </div>
+
+    <div class="button-wrapper-wrapper">
+
+        <div class="buttons-wrapper">
+            <button class="button utility-button" onclick="resetAll()">Zurücksetzen</button>
+            <button class="button utility-button" style="visibility: hidden"></button>
+            <button class="button utility-button" onclick="addItem('Pfand', 0.25, '#555')">Pfand</button>
+            <button class="button utility-button" onclick="addItem('Pfand zurück', -0.25, '#555')">Pfand zurück</button>
         </div>
 
-        <div id="items"></div>
+        <div class="buttons-wrapper">
+            <button class="button" style="background-color: #F5C542;" onclick="addItem('Bier / Radler / Alkoholfrei', 4.25, '#F5C542', true)">Bier / Radler / Alkoholfrei</button>
+            <button class="button" style="background-color: #050761;" onclick="addItem('Wasser (Medium/Still)', 3.75, '#050761', true)">Wasser (Medium/Still)</button>
+            <button class="button" style="background-color: #5c3e30 ;" onclick="addItem('Cola / Fanta / Mezzo / Lift / FuzeTea', 4.0, '#5C4033', true)">Cola/Fanta/Mezzo Lift/FuzeTea</button>
+
+            <button class="button" style="background-color: #efaea2;" onclick="addItem('Weinschorle', 4.75, '#EFA6A2', true)">Weinschorle 0,5l</button>
+
+            <button class="button" style="background-color: #8e44ad;" onclick="addItem('Red Bull', 3.25, '#8e44ad', true)">Red Bull</button>
+            <button class="button" style="background-color: #301705;" onclick="addItem('Kaffee', 2.50, '#301705', false)">Kaffee 0,2l</button>
+
+        </div>
+        <div class="buttons-wrapper">
+
+            <button class="button" style="background-color: #ea9908;" onclick="addItem('Pommes Frites', 3.90, '#ea9908')">Pommes Frites</button>
+            <button class="button utility-button" style="visibility: hidden"></button>
+
+
+            <button class="button" style="background-color: #431612FF;" onclick="addItem('Bratwurst/Feuerwurst mit Brötchen', 4.20, '#431612FF')">Bratwurst / Feuerwurst mit Brötchen</button>
+            <button class="button" style="background-color: #a31306;" onclick="addItem('Rindswurst mit Brötchen', 4.50, '#a31306')">Rindswurst mit Brötchen</button>
+
+            <button class="button" style="background-color: #cd2811;" onclick="addItem('Curry-Wurst mit Brötchen', 4.90, '#cd2811')">Curry-Wurst mit Brötchen</button>
+            <button class="button" style="background-color: #cd2811;" onclick="addItem('Curry-Wurst mit Pommes Frites', 8.50, '#cd2811')">Curry-Wurst mit Pommes Frites</button>
+
+            <button class="button" style="background-color: #431612FF;" onclick="addItem('Frikadelle mit Brötchen', 4.20, '#431612FF')">Frikadelle mit Brötchen</button>
+            <button class="button" style="background-color: #431612FF;" onclick="addItem('Schnitzel mit Brötchen', 5.50, '#431612FF')">Schnitzel mit Brötchen</button>
+
+            <!-- Beispielhafte Auswahl – Farben kannst du noch anpassen -->
+    <!--        <button class="button" style="background-color: #F5C542;" onclick="addItem('Bier 0,5l', 4.25, '#F5C542', true)">Bier 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #F5C542;" onclick="addItem('Radler 0,5l', 4.25, '#F5C542', true)">Radler 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #42AAF5FF;" onclick="addItem('Bier 0,0 0,5l', 4.25, '#42AAF5FF', true)">Bier 0,0 0,5l</button>-->
+    <!--        <button class="button utility-button" style="visibility: hidden"></button>-->
+
+    <!--        <button class="button" style="background-color: #050761;" onclick="addItem('Wasser Medium 0,5l', 3.75, '#050761', true)">Wasser Medium 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #050761;" onclick="addItem('Wasser Still 0,5l', 3.75, '#050761', true)">Wasser Still 0,5l</button>-->
+
+
+    <!--        <button class="button" style="background-color: #5C4033 ;" onclick="addItem('Cola 0,5l', 4.0, '#5C4033', true)">Cola 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #5C4033 ;" onclick="addItem('Cola Zero 0,5l', 4.0, '#5C4033', true)">ColaZero 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #A14D2E;" onclick="addItem('Mezzo Mix 0,5l', 4.0, '#A14D2E', true)">Mezzo Mix 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #f39c12;" onclick="addItem('Fanta 0,5l', 4.0, '#f39c12', true)">Fanta 0,5l</button>-->
+
+    <!--        <button class="button" style="background-color: #efaea2;" onclick="addItem('Weinschorle 0,5l', 4.75, '#EFA6A2', true)">Weinschorle 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #27ae60;" onclick="addItem('Apfelschorle 0,5l', 4.0, '#27ae60', true)">Apfelschorle 0,5l</button>-->
+    <!--        <button class="button" style="background-color: #f1630b;" onclick="addItem('Fuze Tea 0,4l', 4.00, '#f1630b', true)">Fuze Tea 0,4l</button>-->
+    <!--        <button class="button" style="background-color: #8e44ad;" onclick="addItem('Red Bull 0,2l', 3.25, '#8e44ad', true)">Red Bull</button>-->
+    <!--        <button class="button" style="background-color: #431f05;" onclick="addItem('Kaffee 0,2l', 2.50, '#431f05', false)">Kaffee 0,2l</button>-->
+            <!--    <button class="button utility-button" style="visibility: hidden"></button>-->
+        </div>
+        <div id="receipt" style="padding: 16px; border-top: 1px solid #ccc;">
+            <h3>🧾 Quittung</h3>
+            <div id="receipt-content"></div>
+        </div>
     </div>
-</div>
-
-<div class="button-wrapper-wrapper">
-
-<div class="buttons-wrapper">
-
-    <button class="button utility-button" onclick="resetAll()">Zurücksetzen</button>
-    <button class="button utility-button" style="visibility: hidden"></button>
-    <button class="button utility-button" onclick="addItem('Pfand', 3.00, '#555')">Pfand</button>
-    <button class="button utility-button" onclick="addItem('Pfand zurück', -3.00, '#555')">Pfand zurück</button>
-
-</div>
-<div class="buttons-wrapper">
-
-    <!-- Beispielhafte Auswahl – Farben kannst du noch anpassen -->
-    <button class="button" style="background-color: #F5C542;" onclick="addItem('Pils 0,4l', 4.0, '#F5C542', true)">Pils 0,4l</button>
-    <button class="button" style="background-color: #F5C542;" onclick="addItem('Radler 0,4l', 4.0, '#F5C542', true)">Radler 0,4l</button>
-    <button class="button" style="background-color: #F5C542;" onclick="addItem('Weizenbier 0,4l', 4.0, '#F5C542', true)">Weizenbier 0,4l</button>
-    <button class="button" style="background-color: #F5C542;" onclick="addItem('Weizenradler 0,4l', 4.0, '#F5C542', true)">Weizenradler 0,4l</button>
-
-    <button class="button" style="background-color: #EFA6A2;" onclick="addItem('Weißherbtschorle 0,4l', 4.5, '#EFA6A2', true)">Weißherbtschorle</button>
-    <button class="button" style="background-color: #F6E27F;" onclick="addItem('Rieslingschorle 0,4l', 4.5, '#F6E27F', true)">Rieslingschorle</button>
-
-    <button class="button" style="background-color: #3498db;" onclick="addItem('Mineralwasser 0,4l', 2.5, '#3498db', true)"> Mineralwasser 0,4l</button>
-    <button class="button" style="background-color: #3498db;" onclick="addItem('Mineralwasser 0,3l', 2.0, '#3498db', true)">Mineralwasser 0,3l</button>
-
-    <button class="button" style="background-color: #27ae60;" onclick="addItem('Apfelschorle 0,4l', 3.0, '#27ae60', true)">Apfelschorle 0,4l</button>
-    <button class="button" style="background-color: #27ae60;" onclick="addItem('Apfelschorle 0,3l', 2.5, '#27ae60', true)">Apfelschorle 0,3l</button>
-
-    <button class="button" style="background-color: #5C4033 ;" onclick="addItem('Cola 0,4l', 3.0, '#5C4033 ')">Cola 0,4l</button>
-    <button class="button" style="background-color: #5C4033 ;" onclick="addItem('Cola Zero 0,4l', 3.0, '#5C4033 ')">ColaZero 0,4l</button>
-    <button class="button" style="background-color: #f39c12;" onclick="addItem('Fanta 0,4l', 3.0, '#f39c12')">Fanta 0,4l</button>
-    <button class="button" style="background-color: #f1c40f;" onclick="addItem('Zitronenlimo 0,4l', 3.0, '#f1c40f')">Zitronenlimo 0,4l</button>
-    <button class="button" style="background-color: #A14D2E;" onclick="addItem('Spezi 0,4l', 3.0, '#A14D2E')">Spezi 0,4l</button>
-    <button class="button utility-button" style="visibility: hidden"></button>
-
-    <button class="button" style="background-color: #e84393;" onclick="addItem('Lillet Berry 0,24l', 5.5, '#e84393')">Lillet Berry</button>
-    <button class="button" style="background-color: #e84393;" onclick="addItem('Lillet Buck 0,24l', 5.5, '#e84393')">Lillet Buck</button>
-    <button class="button" style="background-color: #e84393;" onclick="addItem('Lillet Lemon 0,24l', 5.5, '#e84393')">Lillet Lemon</button>
-    <button class="button utility-button" style="visibility: hidden"></button>
-
-    <button class="button" style="background-color: #7f8c8d;" onclick="addItem('Asbach-Cola 0,2l', 3.5, '#7f8c8d')">Asbach-Cola</button>
-    <button class="button" style="background-color: #2c3e50;" onclick="addItem('Fliegender Hirsch 0,22l', 4.0, '#2c3e50')">Fliegender Hirsch</button>
-    <button class="button" style="background-color: #34495e;" onclick="addItem('Wodka Red Bull 0,2l', 4.0, '#34495e')">Wodka Red Bull</button>
-
-    <button class="button" style="background-color: #8e44ad;" onclick="addItem('Jägermeister 0,02l', 2.0, '#8e44ad')">Jägermeister</button>
-    <button class="button" style="background-color: #8e44ad;" onclick="addItem('Pflümli 0,02l', 2.0, '#8e44ad')">Pflümli</button>
-
-    <button class="button" style="background-color: #8e44ad;" onclick="addItem('Wodka-Feige 0,02l', 2.5, '#8e44ad')">Wodka-Feige</button>
-    <button class="button" style="background-color: #8e44ad;" onclick="addItem('Josta-Likör 0,02l', 2.5, '#8e44ad')">Josta-Likör</button>
-
-    <button class="button" style="background-color: #8e44ad;" onclick="addItem('Red Bull 0,2l', 3.0, '#8e44ad')">Red Bull</button>
-</div>
-
-<div id="receipt" style="padding: 16px; border-top: 1px solid #ccc;">
-    <h3>🧾 Quittung</h3>
-    <div id="receipt-content"></div>
-</div>
-
-</div>
 
 </body>
 </html>

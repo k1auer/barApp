@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="img.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <script src="app.js" defer></script>
+
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script src="vendor/driver_js/driver.js"></script>
+    <link rel="stylesheet" href="vendor/driver_js/driver.css"/>
+
+    <title>Bar App</title>
+</head>
+<body>
+    <div class="header-wrapper">
+        <div class="header">
+            <div class="header-first-line">
+                <div id="total">Gesamt: 0.00 €</div>
+                <button class="button-site-change" style="background-color: #555555;" onclick="location.href='index.html'">zum Kiosk</button>
+            </div>
+
+            <div id="items"></div>
+        </div>
+    </div>
+
+    <div class="button-wrapper-wrapper">
+
+        <div class="buttons-wrapper">
+            <button class="button utility-button" onclick="resetAll()">Zurücksetzen</button>
+            <button class="button utility-button" style="visibility: hidden"></button>
+            <button class="button utility-button" onclick="addItem('Pfand', 0.25, '#555')">Pfand</button>
+            <button class="button utility-button" onclick="addItem('Pfand zurück', -0.25, '#555')">Pfand zurück</button>
+        </div>
+        <div class="buttons-wrapper">
+            <button class="button" style="background-color: #F5C542;" onclick="addItem('Bier / Radler / Alkoholfrei', 4.25, '#F5C542', true)">Bier / Radler / Alkoholfrei</button>
+            <button class="button" style="background-color: #050761;" onclick="addItem('Wasser (Medium/Still)', 3.75, '#050761', true)">Wasser (Medium/Still)</button>
+            <button class="button" style="background-color: #5c3e30 ;" onclick="addItem('Cola/Fanta/Mezzo/Lift/FuzeTea', 4.0, '#5C4033', true)">Cola/Fanta/Mezzo  Lift/FuzeTea</button>
+
+            <button class="button" style="background-color: #efaea2;" onclick="addItem('Weinschorle', 4.75, '#EFA6A2', true)">Weinschorle 0,5l</button>
+
+            <button class="button" style="background-color: #8e44ad;" onclick="addItem('Red Bull', 3.25, '#8e44ad', true)">Red Bull</button>
+            <button class="button" style="background-color: #301705;" onclick="addItem('Kaffee', 2.50, '#301705', false)">Kaffee 0,2l</button>
+        </div>
+        <div class="buttons-wrapper">
+            <button class="button" style="background-color: #431612FF;" onclick="addItem('Bratwurst/Feuerwurst mit Brötchen', 4.20, '#431612FF')">Bratwurst / Feuerwurst mit Brötchen</button>
+            <button class="button" style="background-color: #a31306;" onclick="addItem('Rindswurst mit Brötchen', 4.50, '#a31306')">Rindswurst mit Brötchen</button>
+
+            <button class="button" style="background-color: #431612FF;" onclick="addItem('Frikadelle mit Brötchen', 4.20, '#431612FF')">Frikadelle mit Brötchen</button>
+            <button class="button utility-button" style="visibility: hidden"></button>
+         </div>
+        <div id="receipt" style="padding: 16px; border-top: 1px solid #ccc;">
+            <h3>🧾 Quittung</h3>
+            <div id="receipt-content"></div>
+        </div>
+    </div>
+</body>
+</html>
