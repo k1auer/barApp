@@ -1,6 +1,7 @@
-const CACHE_NAME = 'getraenkerechner-cache-v7';
+const CACHE_NAME = 'getraenkerechner-cache-v8';
 const urlsToCache = [
-    '/',
+    '/manifest.json',
+    '/manifest.webmanifest',
     '/index.html',
     '/tribuene.html',
     '/essen.html',
@@ -10,7 +11,8 @@ const urlsToCache = [
 
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(urlsToCache))
     );
 });
 
