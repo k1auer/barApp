@@ -157,6 +157,7 @@
                 console.log("App Version angefordert");
                 getConstantFromSW().then(value => {
                     console.log("App Version:", value);
+                    alert("App Version: " + value);
                 }).catch(e => console.error(e));
             }
         });
