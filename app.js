@@ -8,7 +8,7 @@
 
     function addItem(name, price, color, withPfand) {
         if (withPfand){
-            addItem('Pfand', 0.25, '#555', false);
+            addItem('Pfand', 3.00, '#555', false);
         }
 
         total += price;
