@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dragstar-rechner-v10';
+const CACHE_NAME = 'dragstar-rechner-v11';
 const urlsToCache = [
     '/manifest.json',
     '/manifest.webmanifest',
